@@ -30,7 +30,7 @@ public class DBConfiguration {
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
-		Class classes[] = new Class[] {User.class,};
+		Class classes[] = new Class[] {User.class};
 		return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 
@@ -40,7 +40,7 @@ public class DBConfiguration {
 		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
 		dataSource.setUsername("MYORACLE");
-		dataSource.setPassword("oracle123");
+		dataSource.setPassword("oracle");
 		return dataSource;
 
 	}
