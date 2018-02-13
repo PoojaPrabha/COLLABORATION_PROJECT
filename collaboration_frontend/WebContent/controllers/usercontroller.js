@@ -4,6 +4,19 @@
 
 app.controller('UserController', function($scope, UserService, $rootScope,
 		$location, $cookieStore) {
+
+	// Statement to fetch user details for update [select * from MYPROJ
+	// where email=?
+	if ($rootScope.loggedInUser != undefined) {
+		UserService.getUserDetails().then(function(response) { // only for loggedInUser - only if user is loggedin
+			
+			$scope.user = response.data
+		}, function(response) {
+			console.log(response.status)
+			$scope.error = response.data
+			$location.path('/login')
+		})
+	}
 	$scope.register = function() {
 		UserService.register($scope.user).then(function(response) {
 			alert('Registered successfully.. please login..')
@@ -31,6 +44,18 @@ app.controller('UserController', function($scope, UserService, $rootScope,
 		}, function(response) {
 			$scope.message = "Please Login.."
 			$location.path('/login')
+		})
+	}
+	$scope.update = function() {
+		UserService.update($scope.user).then(function(response) {
+			alert("updated the details successfully...")
+			$rootScope.loggedInUser = response.data// updated user object
+			$cookieStore.put('loggedInUser', response.data)
+			$location.path('/home')
+		}, function(response) {
+			console.log(response.status)
+			if (response.status == 401)
+				$location.path('/login')
 		})
 	}
 

@@ -10,6 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan(basePackages="com.MYPROJ")
 public class WebConfig extends WebMvcConfigurerAdapter{
 public WebConfig(){
-	System.out.println("WEBCONFIG class is instantiated");
+	System.out.println("WEBCONFIG class is INSTANTIATED");
 }
 }

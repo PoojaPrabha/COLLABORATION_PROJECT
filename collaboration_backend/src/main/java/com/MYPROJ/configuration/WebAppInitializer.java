@@ -4,7 +4,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 //web.xml file in project 1
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
    public  WebAppInitializer() {
-      System.out.println("WEBAPPINITIALIZER is Instantiated");
+      System.out.println("WEBAPPINITIALIZER is INSTANTIATED");
 }
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
