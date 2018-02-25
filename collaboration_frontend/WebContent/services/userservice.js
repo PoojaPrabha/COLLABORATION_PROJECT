@@ -4,7 +4,7 @@
 app.factory('UserService', function($http) {
 	var userService = {}
 
-	var BASE_URL = "http://localhost:8085/collaboration_middleware"
+	var BASE_URL = "http://localhost:8090/collaboration_middleware"
 
 	userService.register = function(user) {
 		return $http.post(BASE_URL + "/register", user)
@@ -16,5 +16,12 @@ app.factory('UserService', function($http) {
 	userService.logout = function() {
 		return $http.put(BASE_URL + "/logout")
 	}
+	userService.getUser = function() {
+		return $http.get(BASE_URL + "/getuser")
+	}
+	userService.update = function(user) {
+		return $http.put(BASE_URL + "/update", user)
+	}
+	
 	return userService;
 })
